@@ -9,12 +9,18 @@ module.exports = {
     module: {
         loaders:[{
             test: /.jsx?$/,
-            exclude: /node_modules/,
+            include:  __dirname + '/src',
             loader: 'babel',
-        },{
-            test: /.css$/,
-            loader:'style!css',
-        } ]       
+        },
+        {
+            test: /.css/,
+            loader:'style',
+        },
+        {
+            test: /.html/,
+            loader:'html',
+        },
+        ]       
     },
 
     plugins: [

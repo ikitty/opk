@@ -29,6 +29,11 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             compress: {warnings: false},
             output: {comments: false},
-        })
+        }),
+        //new webpack.optimize.CommonsChunkPlugin({
+            //name:      'vendor',
+            //children:  true,
+            //minChunks: 2,
+        //}),
     ],
 }

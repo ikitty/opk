@@ -1,7 +1,16 @@
 import $ from 'jquery'
-import './Button.css'
+import './style.css'
 
-import Button from './Button'
-const button  = new Button('qq.com');
-$('#ret').html(button.render('a'));
-//button.render('a');
+if ($('div.btn').length) {
+    require.ensure([], ()=> {
+        const Btn = require('./Button').default
+        new Btn().render('div.btn');
+    })
+}
+
+if ($('div.header').length ) {
+    require.ensure([], ()=> {
+        const Header = require('./Header').default
+        new Header().render('div.header');
+    })
+}

@@ -1,6 +1,7 @@
 import $ from 'jquery'
 import template from './Button.html'
-//import './Button.css'
+import './Button.css'
+import Mustache from 'mustache'
 
 export default class Button {
     constructor(link) {
@@ -10,7 +11,12 @@ export default class Button {
         alert(this.link)
     }
     render(node){
-        return 'hiButton' ;
-        //$(node).html('hiButton');
+        const text  = $(node).text();
+
+        $(node).html(
+            Mustache.render(template, {link: this.link, text: text})
+        );
+
+        $('.btn').click(this.onClick.bind(this))
     }
 }

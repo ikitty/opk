@@ -3,21 +3,23 @@ const webpack = require('webpack');
 module.exports = {
     entry: './src/app.js',
     output:{
-        path: './bin',
-        filename: 'app.bundle.js',
+        path: './build',
+        publicPath: './build/',
+        filename: 'bundle.js',
     },
     module: {
-        loaders:[{
-            test: /.jsx?$/,
-            include:  __dirname + '/src',
-            loader: 'babel',
+        loaders:[
+        {
+            test: /\.js$/,
+            loader: 'babel?presets[]=es2015',
+            include: /src/,
         },
         {
-            test: /.css/,
-            loader:'css',
+            test: /\.css$/,
+            loader:'style!css',
         },
         {
-            test: /.html/,
+            test: /\.html$/,
             loader:'html',
         },
         ]       

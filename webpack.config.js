@@ -44,7 +44,7 @@ module.exports = {
     output:{
         path: './build',
         //webpack的时候 路径要以点开头，devserver的时候要以文件名开头
-        publicPath: './build/',
+        publicPath: production ? './build/' : '/build/' ,
         filename: production ? '[name]-[hash].js' : 'bundle.js',
         chunkFilename: '[name]-[chunkhash].js',
     },
@@ -75,6 +75,5 @@ module.exports = {
     plugins: plugins,
     devServer: {
         hot: true,
-    },
-
+    }
 }

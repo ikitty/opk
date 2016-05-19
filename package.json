@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nothing",
-    "dev": "webpack-dev-server --inline --hot",
-    "publish": "NODE_ENV=production webpack --display-chunks --display-modules",
+    "dev": "webpack-dev-server --inline --hot"
   },
   "author": "enix",
   "license": "MIT",

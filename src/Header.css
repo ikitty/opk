@@ -1,1 +1,13 @@
-.header {padding:20px;border:1px solid #ccc;background-color:#09f;font-size:16px;}
+.top_cont {background: url(http://ossweb-img.qq.com/images/t7/act/a20160226love/bg_top.jpg) 283px top no-repeat;}
+.logo {background-image:url(logo.png);background-repeat:no-repeat;}
+
+.top_cont {position:relative;height: 70px;background-color:#1C1C1C;font-family: "\5FAE\8F6F\96C5\9ED1";z-index: 2;}
+.logo {position:absolute;left:0px;top:0px;width: 283px;height: 150px;text-indent:-999px;overflow:hidden;}
+
+.core_link {padding-left: 240px;padding-top: 15px;zoom: 1;overflow: hidden;position: relative;}
+.core_link .solid_link {float:left;width: 200px;zoom:1;overflow:hidden;font-size: 12px;padding-top: 6px;}
+.core_link .solid_link a {display:block;float:left;width: 80px;margin-right: 20px;height: 30px;line-height: 30px;background-color: #755F23;text-align:center;color: #fff;font-size: 14px;}
+.core_link .event_link {float:left;zoom:1;overflow:hidden;#width:715px;padding-left: 0px;padding-top: 12px;white-space:nowrap;word-break:keep-all;word-wrap:normal;}
+.core_link .event_link a {float:left;margin: 0px 25px 0 0;height:100%;color: #A7A7A7;font: 700 16px/20px  "\5FAE\8F6F\96C5\9ED1", tahoma;}
+.core_link .event_link a.on,
+.core_link .event_link a:hover {color:#B39646;}

@@ -1,116 +1,13 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>webpack 初探</title>
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+<head>
+<meta charset="utf-8" />
+<title>webpack 初探</title>
+<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+</head>
+<body>
+<textarea id="source">
 
-      body { font-family: 'Microsoft yahei'; }
-      h1, h2, h3 { font-family: 'Droid Serif'; font-weight: 400; margin-bottom: 0; }
-      .remark-slide-content h1 { font-size: 3em; }
-      .remark-slide-content h2 { font-size: 2em; }
-      .remark-slide-content h3 { font-size: 1.6em; }
-      .footnote {
-        position: absolute;
-        bottom: 3em;
-      }
-      li p { line-height: 1.25em; }
-      .red { color: #fa0000; }
-      .large { font-size: 2em; }
-      a, a > code {
-        color: rgb(249, 38, 114);
-        text-decoration: none;
-      }
-      code {
-        background: #e7e8e2;
-        border-radius: 5px;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-      .remark-code-line-highlighted     { background-color: #373832; }
-      .pull-left {
-        float: left;
-        width: 47%;
-      }
-      .pull-right {
-        float: right;
-        width: 47%;
-      }
-      .pull-right ~ p {
-        clear: both;
-      }
-      #slideshow .slide .content code {
-        font-size: 0.8em;
-      }
-      #slideshow .slide .content pre code {
-        font-size: 0.9em;
-        padding: 15px;
-      }
-      .inverse {
-        background: #272822;
-        color: #777872;
-        text-shadow: 0 0 20px #333;
-      }
-      .inverse h1, .inverse h2 {
-        color: #f3f3f3;
-        line-height: 0.8em;
-      }
-
-      /* Slide-specific styling */
-      #slide-inverse .footnote {
-        bottom: 12px;
-        left: 20px;
-      }
-      #slide-how .slides {
-        font-size: 0.9em;
-        position: absolute;
-        top:  151px;
-        right: 140px;
-      }
-      #slide-how .slides h3 {
-        margin-top: 0.2em;
-      }
-      #slide-how .slides .first, #slide-how .slides .second {
-        padding: 1px 20px;
-        height: 90px;
-        width: 120px;
-        -moz-box-shadow: 0 0 10px #777;
-        -webkit-box-shadow: 0 0 10px #777;
-        box-shadow: 0 0 10px #777;
-      }
-      #slide-how .slides .first {
-        background: #fff;
-        position: absolute;
-        top: 20%;
-        left: 20%;
-        z-index: 1;
-      }
-      #slide-how .slides .second {
-        position: relative;
-        background: #fff;
-        z-index: 0;
-      }
-
-      /* Two-column layout */
-      .left-column {
-        color: #777;
-        width: 20%;
-        height: 92%;
-        float: left;
-      }
-        .left-column h2:last-of-type, .left-column h3:last-child {
-          color: #000;
-        }
-      .right-column {
-        width: 75%;
-        float: right;
-        padding-top: 1em;
-      }
-    </style>
-  </head>
-  <body>
-    <textarea id="source">
 name: inverse
 layout: true
 class: center, middle, inverse
@@ -120,350 +17,417 @@ class: center, middle, inverse
 ---
 ## Webpack 是啥?
 ---
+<img src="intro.jpg" width="100%"/>
+---
 layout: false
 .left-column[
   ## What is it?
 ]
 .right-column[
 
-- todo
-- why? 现状
-- how
-    - require and set up and config 
-    - a demo
-    - core part: loader , plugin
-    - core part: build
-    - devServer
-- futher
-    - for tieji
-    - for common module
-
-
 - 构建工具
 
 - 模块打包
 
-- 专注于模块化编程
-
 - 基于性能优化的资源合并
 
-
-<!--.footnote[.red[*] At least browsers try their best]-->
 ]
 ---
 .left-column[
-  ## What is it?
   ## Why use it?
 ]
 .right-column[
-If your ideal slideshow creation workflow contains any of the following steps:
 
-- Just write what's on your mind
+- 原始时代
+    - 场景简单，依赖约定的命名规则
+
+- 命名空间
+    - 复杂度增加，依赖命名空间
+
+- 模块化时代
+    - `requirejs，seajs, modulejs`
 
 ]
 ---
 .left-column[
-  ## What is it?
   ## Why use it?
 ]
 .right-column[
-As the slideshow is expressed using Markdown, you may:
 
-- Focus on the content, expressing yourself in next to plain text not worrying what flashy graphics and disturbing effects to put where
+- 一切皆是模块
+- 支持AMD、CommonJS
+- 根据依赖打包
+- 专注性能的打包
+- 专注于模块化编程
 
-As the slideshow is actually an HTML document, you may:
-
-- Display it in any decent browser
-
-- Style it using regular CSS, just like any other HTML content
-
-- Use it offline!
-
-As the slideshow is contained in a plain file, you may:
-
-- Store it wherever you like; on your computer, hosted from your Dropbox, hosted on Github Pages alongside the stuff you're presenting...
-
-- Easily collaborate with others, keeping track of changes using your favourite SCM tool, like Git or Mercurial
 ]
 ---
 template: inverse
 
-## How does it work, then?
----
-name: how
-
-.left-column[
-  ## How does it work?
-### - Markdown
-]
-.right-column[
-A Markdown-formatted chunk of text is transformed into individual slides by JavaScript running in the browser:
-
-```remark
-# Slide 1
-This is slide 1
+# 初现峥嵘
 
 ---
+- Require: `node npm `
 
-# Slide 2
-This is slide 2
+- Setup: `npm i webpack -g`
+
+- cats.js: 
+```js
+var cats = ['dave', 'henry', 'martha'];
+module.exports = cats;
 ```
 
-.slides[
-  .first[
-  ### Slide 1
-  This is slide 1
-  ]
-  .second[
-  ### Slide 2
-  This is slide 2
-  ]
-]
-
-Regular Markdown rules apply with only a single exception:
-
-  - A line containing three dashes constitutes a new slide
-  (not a horizontal rule, `&lt;hr /&gt;`)
-
-Have a look at the [Markdown website](http://daringfireball.net/projects/markdown/) if you're not familiar with Markdown formatting.
-]
----
-.left-column[
-  ## How does it work?
-  ### - Markdown
-  ### - Inside HTML
-]
-.right-column[
-A simple HTML document is needed for hosting the styles, Markdown and the generated slides themselves:
-
-```xml
-<!DOCTYPE html>
-<html>
-  <head>
-    <style type="text/css">
-      /* Slideshow styles */
-    </style>
-  </head>
-  <body>
-*    <textarea id="source">
-      <!-- Slideshow Markdown -->
-    &lt;/textarea&gt;
-*    <script src="remark.js">
-    </script>
-    <script>
-*      var slideshow = remark.create();
-    </script>
-  </body>
-</html>
+- app.js(entry): 
+```js
+cats = require('./cats.js');
+console.log(cats);
 ```
 
-You may download remark to have your slideshow not depend on any online resources, or reference the [latest version](http://remarkjs.com/downloads/remark-latest.min.js) online directly.
-]
+---
+- run cmd:
+```js
+&gt; webpack ./app.js bundle.js
+&gt; node bundle.js
+```
+
+- show result:
+```js
+&gt; ["dave", "henry", "martha"]
+```
+---
+## 基本配置
+- package.js
+    - `npm init`
+
+- webpack.config.js
+
+    ```js
+    const webpack = require('webpack');
+    module.exports = {
+        entry: './src/app.js',
+        output: {
+            path: './build',
+            filename: 'bundle.js',
+        }
+    }
+    ```    
+---
+
+- 目录规划
+
+    ```
+    webpackDemo
+    ├─build
+    ├─src
+    │   ├─index.html
+    │   ├─index.less
+    │   ├─index.js
+    │   └─componentes
+    ├─package.json
+    └─webpack.config.js
+    ```
+
+
 ---
 template: inverse
-
-## Of course, Markdown can only go so far.
+# 渐入佳境
 ---
-.left-column[
-  ## Markdown extensions
-]
-.right-column[
-To help out with slide layout and formatting, a few Markdown extensions have been included:
+## Loaders 
 
-- Slide properties, for naming, styling and templating slides
+### 一切皆模块，不同模块使用对应的Loader，如：
 
-- Content classes, for styling specific content
+- babel-loader将es6的模块转换为es5模块
 
-- Syntax highlighting, supporting a range of languages
-]
+- style-loader, css-loader 处理样式模块
+
+- url-loader, file-loader 处理图片
+
+- 。。。
 
 ---
-.left-column[
-  ## Markdown extensions
-  ### - Slide properties
-]
-.right-column[
-Initial lines containing key-value pairs are extracted as slide properties:
+##loaders - babel
 
-```remark
-name: agenda
-class: middle, center
+- Setup:
 
-# Agenda
+    ```
+    npm install babel-loader --save-dev
+    npm install babel-core babel-preset-es2015 --save-dev
+    ```
 
-The name of this slide is {{ name }}.
-```
+- Config:
 
-Slide properties serve multiple purposes:
+    ```
+    module.exports = {
+        entry:  './src',
+        output: {
+            path:     'build',
+            filename: 'bundle.js',
+        },
+        module: {
+            loaders: [
+                {
+                    test:   /\.jsx?$/,
+    *               loader: 'babel?presets[]=es2015',
+                    include: __dirname + '/src',
+                }
+            ],
+        }
+    };
+    ```
 
-* Naming and styling slides using properties `name` and `class`
-
-* Using slides as templates using properties `template` and `layout`
-
-* Expansion of `{{ property }}` expressions to property values
-
-See the [complete list](https://github.com/gnab/remark/wiki/Markdown#slide-properties) of slide properties.
-]
 ---
-.left-column[
-  ## Markdown extensions
-  ### - Slide properties
-  ### - Content classes
-]
-.right-column[
-Any occurences of one or more dotted CSS class names followed by square brackets are replaced with the contents of the brackets with the specified classes applied:
-
-```remark
-.footnote[.red.bold[*] Important footnote]
-```
-
-Resulting HTML extract:
-
-```xml
-<span class="footnote">
-  <span class="red bold">*</span> Important footnote
-</span>
-```
-]
----
-.left-column[
-  ## Markdown extensions
-  ### - Slide properties
-  ### - Content classes
-  ### - Syntax Highlighting
-]
-.right-column[
-Code blocks can be syntax highlighted by specifying a language from the set of [supported languages](https://github.com/gnab/remark/wiki/Configuration#highlighting).
-
-Using [GFM](http://github.github.com/github-flavored-markdown/) fenced code blocks you can easily specify highlighting language:
-
-.pull-left[
-
-<pre><code>```javascript
-function add(a, b)
-  return a + b
-end
-```</code></pre>
-]
-.pull-right[
-
-<pre><code>```ruby
-def add(a, b)
-  a + b
-end
-```</code></pre>
-]
-
-A number of highlighting [styles](https://github.com/gnab/remark/wiki/Configuration#highlighting) are available, including several well-known themes from different editors and IDEs.
-
-]
----
-.left-column[
-  ## Presenter mode
-]
-.right-column[
-To help out with giving presentations, a presenter mode comprising the
-following features is provided:
-
-- Display of slide notes for the current slide, to help you remember
-  key points
-
-- Display of upcoming slide, to let you know what's coming
-
-- Cloning of slideshow for viewing on extended display
-]
----
-.left-column[
-  ## Presenter mode
-  ### - Inline notes
-]
-.right-column[
-Just like three dashes separate slides,
-three question marks separate slide content from slide notes:
+##在模块中使用ES6语法:
 
 ```
-Slide 1 content
+import $ from 'jquery';
 
-*???
-
-Slide 1 notes
-
----
-
-Slide 2 content
-
-*???
-
-Slide 2 notes
+$('body').html('Hello');
 ```
 
-Slide notes are also treated as Markdown, and will be converted in the
-same manner slide content is.
-
-Pressing __P__ will toggle presenter mode.
-]
-???
-Congratulations, you just toggled presenter mode!
-
-Now press __P__ to toggle it back off.
 ---
-.left-column[
-  ## Presenter mode
-  ### - Inline notes
-  ### - Cloned view
-]
-.right-column[
-Presenter mode of course makes no sense to the audience.
+##loaders - style, css
 
-Creating a cloned view of your slideshow lets you:
+- Setup:
 
-- Move the cloned view to the extended display visible to the audience
+    ```
+    npm install style-loader css-loader --save-dev
+    ```
 
-- Put the original slideshow in presenter mode
+- Config:
 
-- Navigate as usual, and the cloned view will automatically keep up with the original
-
-Pressing __C__ will open a cloned view of the current slideshow in a new
-browser window.
-]
+    ```
+    {
+        test: /\.css$/,
+        loader: 'style!css'
+    },
+    ```
 ---
+##loaders - style, css
+
+- 像引入其他模块一样引入css模块：
+
+    ```
+    require('./style.css')
+
+    //or with ES6 syntax
+    import './style.css'
+    ```
+
+- `style!css`先将模块通过css-loader载入，然后通过style-loader将样式载入到页面中
+
+---
+##loaders - url, file
+
+- Setup:
+
+    ```
+    npm install url-loader file-loader --save-dev
+    ```
+
+- Config:
+
+    ```
+    {
+        test:   /\.(png|gif|jpe?g|svg)$/i,
+        loader: 'url?limit=10000',
+    },
+    ```
+
+---
+##loaders - url, file
+
+- file-loader, 返回资源的URL
+
+- url-loader, 将资源转码为base64编码
+
+- `url?limit=10000`，如果资源小于10kb，就转为base64编码内嵌到页面；否则就使用外链的图片
+
+---
+##Chunks
+
+Load resource on demand for Performance
+
+
+- `require.ensure`的callback中的代码会分离到一个新的chunk中，当需要的时候会自动异步载入到页面
+    
+    ```
+    if (document.querySelectorAll('a').length) {
+        require.ensure([], () = {
+            const Button = require('./Components/Button');
+            const button = new Button('qq.com');
+
+            button.render('a');
+        });
+    }
+
+    if (document.querySelectorAll('div.header').length) {
+        require.ensure([], () = {
+            const Button = require('./Components/Header');
+            new Button('qq.com').render() ;
+        });
+    }
+    ```
+
+---
+
+##Chunks result:
+
+```
+$ webpack --display-modules --display-chunks
+......
+chunk    {0} bundle.js (main) 550 bytes [rendered]
+    [0] ./src/index.js 550 bytes {0} [built]
+chunk    {1} 1.bundle.js 290 kB {0} [rendered]
+    [1] ./src/Components/Button.js 1.94 kB {1} [built]
+    [2] ./~/jquery/dist/jquery.js 259 kB {1} {2} [built]
+    [3] ./src/Components/Button.html 72 bytes {1} [built]
+    [4] ./~/mustache/mustache.js 19.4 kB {1} {2} [built]
+    [5] ./src/Components/Button.scss 1.05 kB {1} [built]
+    [6] ./~/css-loader!./~/sass-loader!./src/Components/Button.scss 212 bytes {1} [built]
+    [7] ./~/css-loader/lib/css-base.js 1.51 kB {1} {2} [built]
+    [8] ./~/style-loader/addStyles.js 7.21 kB {1} {2} [built]
+chunk    {2} 2.bundle.js 290 kB {0} [rendered]
+    [2] ./~/jquery/dist/jquery.js 259 kB {1} {2} [built]
+    [4] ./~/mustache/mustache.js 19.4 kB {1} {2} [built]
+    [7] ./~/css-loader/lib/css-base.js 1.51 kB {1} {2} [built]
+    [8] ./~/style-loader/addStyles.js 7.21 kB {1} {2} [built]
+    [9] ./src/Components/Header.js 1.62 kB {2} [built]
+   [10] ./src/Components/Header.html 64 bytes {2} [built]
+   [11] ./src/Components/Header.scss 1.05 kB {2} [built]
+   [12] ./~/css-loader!./~/sass-loader!./src/Components/Header.scss 192 bytes {2} [built]
+```
+
+
+---
+
 template: inverse
-
-## It's time to get started!
+# 游刃有余
 ---
-.left-column[
-  ## Getting started
-]
-.right-column[
-Getting up and running is done in only a few steps:
 
-1. Visit the [project site](http://github.com/gnab/remark)
+## Webpack-dev-server
 
-2. Follow the steps in the Getting Started section
+LiveReload, BrowserSync, HotModuleReload
 
-For more information on using remark, please check out the [wiki](https://github.com/gnab/remark/wiki) pages.
-]
+- Setup
+
+    ```
+    npm install webpack-dev-server --save-dev
+    ```
+- 开启HMR模式，所写即所得
+
+    ```
+    webpack-dev-server --inline --hot
+    ```
+- `http://localhost:8080/webpack-dev-server/`
+
+---
+## Webpack-dev-server HMR
+
+<img src="hmr.gif" style="width:500px;"/>
+
+
+---
+## Plugins
+
+- UglifyJsPlugin
+
+    ```
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {warnings: false},
+            output: {comments: false},
+        }),
+    ]
+    ```
+
+
+---
+## Plugins
+
+- CommonsChunkPlugin， 将重复模块抽取为公用模块
+
+    ```
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'main',
+            children: true,
+            minChunks: 2,
+        }),
+    ]
+    ```
+
+---
+##Plugins
+
+- CommonsChunkPlugin result:
+
+    ```
+    chunk    {0} bundle.js (main) 287 kB [rendered]
+        [0] ./src/index.js 550 bytes {0} [built]
+    *   [2] ./~/jquery/dist/jquery.js 259 kB {0} [built]
+    *   [4] ./~/mustache/mustache.js 19.4 kB {0} [built]
+        [7] ./~/css-loader/lib/css-base.js 1.51 kB {0} [built]
+        [8] ./~/style-loader/addStyles.js 7.21 kB {0} [built]
+    chunk    {1} 1.bundle.js 3.28 kB {0} [rendered]
+        [1] ./src/Components/Button.js 1.94 kB {1} [built]
+        [3] ./src/Components/Button.html 72 bytes {1} [built]
+        [5] ./src/Components/Button.scss 1.05 kB {1} [built]
+        [6] ./~/css-loader!./~/sass-loader!./src/Components/Button.scss 212 bytes {1} [built]
+    chunk    {2} 2.bundle.js 2.92 kB {0} [rendered]
+        [9] ./src/Components/Header.js 1.62 kB {2} [built]
+       [10] ./src/Components/Header.html 64 bytes {2} [built]
+       [11] ./src/Components/Header.scss 1.05 kB {2} [built]
+       [12] ./~/css-loader!./~/sass-loader!./src/Components/Header.scss 192 bytes {2} [built]
+    ```
+
+
 ---
 name: last-page
 template: inverse
 
-## That's all folks (for now)!
+## That's all (for now)!
 
-Slideshow created using [remark](http://github.com/gnab/remark).
-    </textarea>
+by Alextang  @ 2016.05
 
-    <script src="remark.js"></script>
-    <script>
-      // var hljs = remark.highlighter.engine;
-    </script>
-    <script src="remark.language.js"></script>
-    <script>
-      var slideshow = remark.create({
-          highlightStyle: 'monokai',
-          highlightLanguage: 'remark',
-          highlightLines: true
-        }) ;
-    </script>
-  </body>
+</textarea>
+
+<script src="remark.js"></script>
+<script>
+    var hljs = remark.highlighter.engine;
+    hljs.registerLanguage('remark', function () {
+        return {
+            contains: [
+            {
+                className: 'keyword',
+                begin: '^#+[^\n]+',
+                relevance: 10
+            },
+            {
+                className: 'comment',
+                begin: '^---?'
+            },
+            {
+                className: 'string',
+                begin: '^\\w+:'
+            },
+            {
+                className: 'literal',
+                begin: '\\{\\{', end: '\\}\\}'
+            },
+            {
+                className: 'string',
+                begin: '\\.\\w+'
+            }
+            ]
+        };
+    });
+
+    var slideshow = remark.create({
+      highlightStyle: 'monokai',
+      highlightLanguage: 'remark',
+      highlightLines: true
+    }) ;
+</script>
+</body>
 </html>
 
